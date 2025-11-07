@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M3U8 Watcher & Player — AutoResume</title>
+  <link rel="stylesheet" href="custom.css" defer>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0/dist/hls.min.js" defer></script>
+  
+</head>
+<body>
+
+  <!-- Hotspot de survol: passez la souris sur les 6px en haut pour révéler les contrôles -->
+  <div class="hotspot" aria-hidden="true"></div>
+
+  <!-- Bouton mobile / accessibilité pour ouvrir/fermer le panneau -->
+  <button id="togglePanel" type="button" aria-expanded="false" aria-controls="controlDrawer" title="Afficher les contrôles">☰</button>
+
+  <!-- Panneau de contrôle “drawer” fixé en haut -->
+  <aside id="controlDrawer" class="control-drawer" role="region" aria-label="Contrôles du lecteur">
+    <header class="drawer-header">
+      <h1>M3U8 Watcher & Player</h1>
+      <div class="drawer-actions">
+        <button id="closePanel" type="button" title="Fermer">✕</button>
+      </div>
+    </header>
+
+    <section class="controls">
+      <label>URL de la page à surveiller
+        <input id="pageUrl" placeholder="https://www.freeshot.live/live-tv/cmtv/330" />
+      </label>
+
+      <label>URL m3u8
+        <input id="m3u8Url" placeholder="https://.../playlist.m3u8?token=..." />
+      </label>
+
+      <label class="check">
+        <input id="autoStart" type="checkbox" checked />
+        <span>Démarrer automatiquement au chargement</span>
+      </label>
+
+      <div class="row">
+        <button id="startBtn" type="button">Démarrer</button>
+        <button id="stopBtn" type="button" disabled>Arrêter</button>
+        <button id="manualInject" type="button">Injecter manuellement</button>
+      </div>
+
+      <div class="info" id="info" role="status" aria-live="polite"></div>
+    </section>
+  </aside>
+
+  <!-- Zone player en plein écran flexible -->
+  <main class="player">
+    <video id="video" controls playsinline autoplay></video>
+  </main>
+<script src="app.custom.js" defer></script>
+<script src="app.js" defer></script>
+
+</body>
+</html>
