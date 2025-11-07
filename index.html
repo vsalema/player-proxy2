@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M3U8 Watcher & Player — Auto / Token / WS</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0/dist/hls.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>M3U8 Watcher & Player</h1>
+
+    <section class="controls">
+      <label>URL de la page à surveiller
+        <input id="pageUrl" placeholder="https://www.freeshot.live/live-tv/cmtv/330" />
+      </label>
+
+      <label>URL m3u8 (ou laisse vide pour extraction automatique)
+        <input id="m3u8Url" placeholder="https://.../playlist.m3u8?token=..." />
+      </label>
+
+      <label>Endpoint d'auth / refresh token (optionnel)
+        <input id="authEndpoint" placeholder="https://example.com/api/get-token" />
+      </label>
+
+      <label>WebSocket endpoint (optionnel)
+        <input id="wsEndpoint" placeholder="wss://example.com/updates" />
+      </label>
+
+      <label>
+        <input id="autoStart" type="checkbox" /> Démarrer automatiquement la surveillance au chargement
+      </label>
+
+      <label>Intervalle polling (ms)
+        <input id="pollInterval" type="number" value="15000" />
+      </label>
+
+      <label>Intervalle refresh token (s)
+        <input id="refreshInterval" type="number" value="300" />
+      </label>
+
+      <div class="row">
+        <button id="startBtn" type="button">Démarrer</button>
+        <button id="stopBtn" type="button" disabled>Arrêter</button>
+        <button id="manualInject" type="button">Injecter manuellement</button>
+      </div>
+
+      <div class="info" id="info"></div>
+    </section>
+
+    <section class="player">
+      <video id="video" controls playsinline muted></video>
+    </section>
+
+  </main>
+</body>
+</html>
