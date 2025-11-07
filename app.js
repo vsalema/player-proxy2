@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!url){ setInfo('URL vide'); return; }
     setInfo('Injection: ' + url);
     destroyHls();
-    video.muted = true;
+    video.muted = false;
 
     const native = !!video.canPlayType && video.canPlayType('application/vnd.apple.mpegurl') !== '';
     if(native){
